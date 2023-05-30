@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    aside {
+      width: 30%;
+      padding-left: 15px;
+      margin-left: 15px;
+      float: right;
+      font-style: italic;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <code>
+    x = 5;
+    y = 6;
+    z = x + y;
+  </code>
+  <p>Save the document by pressing <kbd>Ctrl + S</kbd></p>
+  
+
+  <pre>
+    <code>
+    x = 5;
+    y = 6;
+    z = x + y;
+    </code>
+  </pre>
+
+  <!-- <p>My family and I visited The Epcot center this summer. The weather was nice, and Epcot was amazing! I had a great summer together with my family!</p>
+
+<aside>
+  <h4>Epcot Center</h4>
+  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+</aside> -->
+
+<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
+<h1>HTML FORMS</h1>
+
+<form>
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname">
+</form>
+
+<hr>
+
+<h1>Choose your favorite Web language:</h1>
+
+<form>
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label>
+</form>
+
+<hr>
+
+<h1>The Submitt button</h1>
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<hr>
+
+<h2>What can JS Do?</h2>
+
+<p id="demo">JavaScript can change the HTML content.🫡</p>
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = "Hello HavaScript!" '>Click Me!</button>
+
+<p id="demo"></p>
+
+<script>
+  let x, y, z;
+  x = 5;
+  y = 9;
+  z = x + y;
+  document.getElementById("demo").innerHTML = z;
+</script>
+
+
+</body>
+</html>

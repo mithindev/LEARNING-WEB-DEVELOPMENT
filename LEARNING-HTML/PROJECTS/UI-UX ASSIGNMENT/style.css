@@ -1,0 +1,62 @@
+html {
+  line-height: 1.5;
+  /* tab-size: 4; */
+  font-family: 'Chivo Mono', monospace;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgb(0, 0, 0));
+}
+
+body {
+  /* margin-left: 50px; */
+  margin: 0;
+  line-height: inherit
+  
+}
+
+.topnav {
+  /* margin-top: 15px; */
+  padding-left: 6vw;
+
+  /* padding: 673px, 30px; */
+  background-color: none;
+  overflow: hidden;
+}
+
+/* .topnav a {
+  float: left;
+  color: gray;
+  text-align: center;
+  padding: 14px 15px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  background-color: aliceblue;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: bisque;
+  color: white;
+} */
+
+.topnav a {
+  position: relative;
+  color: gray;  /* Set the color of the text */
+  text-decoration: none;  /* Remove the default underline */
+}
+
+.topnav a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px; /* Set the height of the underline */
+  bottom: 0;
+  left: 0;
+  background-color: #797979; /* Set the color of the underline */
+  transition: width 0.2s ease-in-out; /* Add a smooth transition effect */
+}
+
+.topnav a:hover::before {
+  width: 100%; /* Expand the width of the underline on hover */
+}

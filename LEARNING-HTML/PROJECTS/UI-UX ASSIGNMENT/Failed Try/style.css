@@ -1,0 +1,84 @@
+:root {
+  --primary-color: lightblue;
+  --white-color: #ffffff;
+  --font-family: 'Chivo Mono', monospace;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: black;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  margin-right: 3rem;
+}
+
+header .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .nav a {
+  color: var(--white-color);
+  text-decoration: none;
+  margin-right: 2rem;
+  text-transform: uppercase;
+  transition: all .2s ease;
+}
+
+header .nav a:hover {
+  color: var(--primary-color);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.content .left img {
+  margin-left: 10rem;
+  width: 379px;
+}
+
+.content .left {
+  width: 50%;
+}
+
+.content .right {
+  width: 50%;
+}
+
+.content .right h6 {
+  font-size: 1.6rem;
+  color: crimson;
+  margin-bottom: 0.5rem;
+}
+
+.content .right h1 {
+  font-size: 4rem;
+  font-weight: 100;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.content .right h1 span {
+  color: var(--primary-color);
+}
+
+.content .right p {
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}

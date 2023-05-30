@@ -1,0 +1,165 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: black;
+}
+
+/* Test */
+
+header .center a{
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  /* margin-right: 5rem; */
+  margin: 3rem;
+  text-transform: uppercase;
+  transition: all .2s ease;
+}
+
+header .left a:hover{
+  color: lightblue;
+}
+
+header {
+  padding: 2rem 0;
+}
+
+/* header .left .logo{
+  margin-right: 3rem;
+} */
+
+header .left {
+  float: left;
+  width: 15%;
+}
+
+header .center {
+  float: center;
+  width: 70%;
+}
+
+header .right {
+  float: right;
+  width: 15%;
+}
+
+
+/* Test */
+
+
+
+header nav .left a{
+  color: var(--white);
+  text-decoration: none;
+  margin-right: 2rem;
+  text-transform: uppercase;
+  transition: all .2s ease;
+}
+
+header nav .left a:hover{
+  color: var(--primary);
+}
+
+header nav {
+  padding: 2rem 0;
+}
+
+header nav .logo{
+  margin-right: 3rem;
+}
+
+body {
+  font-family: 'Chivo Mono', monospace;
+}
+
+.head{
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.content {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.content .left img {
+  margin-left: 10rem;
+  width: 379px;
+}
+
+.content .left {
+  float: left;
+  width: 50%;
+}
+
+.content .right {
+  float: right;
+  width: 50%;
+}
+
+/* .content .right {
+  text-align: right;
+  color: white;
+  margin-top: -7rem;
+} */
+
+.content .right h6{
+  font-size: 1.6rem;
+  color: crimson;
+  margin-bottom: 0.5rem;
+}
+
+.content .right h1{
+  font-size: 4rem;
+  font-weight: 100;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.content .right h1 span{
+  color: var(--primary);
+}
+
+.content .right p{
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+
+
+
+/* header {
+  background-color: rgb(80, 130, 188);
+} */
+
+/* nav {
+  background-color: aliceblue;
+  height: 50px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a{
+  display: block;
+  background-color: plum;
+  text-decoration: none;
+  padding: 0 10px;
+  line-height: 50px;
+} */
+
+
+

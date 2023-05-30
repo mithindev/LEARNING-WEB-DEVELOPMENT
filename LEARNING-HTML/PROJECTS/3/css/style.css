@@ -1,0 +1,32 @@
+html {
+    font-size: 20px;
+}
+
+body {
+    min-height: 100vh;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+th, td, caption {
+    border: 1px solid #333;
+    font-family: 'Courier New', Courier, monospace;
+    border-collapse: separate;
+    padding: 0.5rem;
+}
+
+img {
+    margin-left: 40px;
+} 
+
+.text1 {
+    margin-left: 40px;
+    margin-top: 1px;
+}
+
+.text2 {
+    margin-top: 40px;
+}

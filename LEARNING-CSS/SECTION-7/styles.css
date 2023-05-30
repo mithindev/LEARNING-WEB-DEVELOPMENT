@@ -1,0 +1,38 @@
+/* UNIVERSAL SELECTOR */
+
+/*  {
+  background-color: black;
+  color: cyan;
+} */
+
+/* button {
+  font-size: 30px;
+}
+
+h1, h2 {
+  color: plum;
+} */
+
+/* THE ID SELECTOR */
+
+body {
+  background-color: #9c47cd;
+}
+
+h1, h2 {
+  color: #04252e;
+}
+
+button {
+  font-size: 25px;
+  background-color: #00607a;
+}
+
+#signup {
+  background-color: #200b0b;
+  color: #f1faee;
+}
+
+span {
+  color: gray;
+}

@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+  font-weight: 400;
+  text-decoration: line-through wavy 1px;
+}
+
+p {
+  text-align: rignt;
+  text-decoration: wavy;
+  /* line-height: 0.2; */
+  letter-spacing: 10px;
+
+}
