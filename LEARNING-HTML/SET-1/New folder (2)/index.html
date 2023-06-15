@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .master {
+      display: flex;
+      /* align-items: center; */
+      margin-top: 0;
+      flex-wrap: wrap;
+      justify-content: center;  
+      /* align-tracks: center; */
+
+    }
+
+    .left {
+      border: 1px solid black;
+    }
+
+    .right {
+      border: 1px solid black;
+      
+    }
+
+    form {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="master">
+    <div class="left">
+      <img src="Illustration.jpeg" alt="just an image" height="500" width="500">
+    </div>
+
+    <div class="right">
+      <form action="#">
+        <h2>Login Page</h2>
+        <label for="username">username :</label>
+        <input type="text" id="username" required pattern="[a-z0-9.]+@[a-z]+\.[a-z]+"><br>
+        <label for="password">Password :</label>
+        <input type="password" required minlength="10">
+
+        <br>
+        <button value="Submit">Submit</button>
+
+        <p><a href="#">forgot password</a></p>
+       <p><a href="#">Sign Up</a></p>
+      </form>
+
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -4,62 +4,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Forms</title>
-
-  <style>
-    .div1 {
-      background-color: aqua;
-    }
-    .div2 {
-      background-color: bisque;
-    }
-    .div3 {
-      background-color: darkblue;
-    }
-    .div4 {
-      background-color: thistle;
-    }
-    .div5 {
-      background-color: rebeccapurple;
-    }
-    .div6 {
-      background-color: pink;
-    }
-
-    .flex-container {
-      display: flex;
-      background-color: rgb(200, 207, 214);
-    }
-
-    .flex-container > div {
-      border-radius: 1050px;
-      margin: 10px;
-      padding: 20px;
-      font-size: 30px;
-    }
-  </style>
-
+  <title>Document</title>
 </head>
 <body>
-  <h1 aligh="center">HTML LAYOUT</h1>
 
-  <div id="div1" class="div1"> hi</div>
-  <br>
-  <div id="div1" class="div1"> hi</div>  
+  <h1>Test</h1>
 
-  <div class="div2" width="100px">
-    <div class="div3">t1</div>
-    <div class="div4">t2</div>
-    <div class="div5">t3</div>
-  </div>
+  <label for="num1">Num1 :
+    <input type="number" id="num1">
+  </label>
 
-  <h1>Create a Flex Container</h1>
+  <br><br>
 
-  <div class="flex-container">
-    <div class="div3">1</div>
-    <div class="div4">2</div>
-    <div class="div5">3</div>  
-  </div>
+  <label for="num2">Num2 :
+    <input type="number" id="num2">
+  </label>
+
+  <button onclick="add()">
+    Sum
+  </button>
+
+  <input id="sum">
+
+  <script>
+    function add() {
+      let num1, num2, sum;
+      num1 = Number(document.getElementById("num1").value);
+      num2 = Number(document.getElementById("num2").value);
+
+      sum = num1 + num2;
+
+      document.getElementById("sum").value = sum;
+    }
+  </script>  
 
   
 </body>

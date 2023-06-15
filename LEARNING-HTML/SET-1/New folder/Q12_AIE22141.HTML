@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voltage Divider Calculator</title>
+    <style>
+        form {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            width: 200px;
+            height: 50px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .input {
+            background-color: #f2f2f2;
+            border: none;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            text-align: center;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form>
+    <div class="container">
+        <div class="box">Input Voltage (V)</div><br>
+        <div class="box"><input type="text" id="inputVoltage" class="input"></div>
+        <div class="box">Resistance1 (Ω)</div><br>
+        <div class="box"><input type="text" id="resistance1" class="input"></div>
+        <div class="box">Resistance2 (Ω)</div><br>
+        <div class="box"><input type="text" id="resistance2" class="input"></div>
+        <div class="box">Output Voltage (V)</div>
+        
+        <div class="box"><input type="text" id="outputVoltage" class="input" readonly></div>
+        <div class="box"><button class="button" onclick="calculate()">Calculate</button></div>
+        <div class=""><button class="button" onclick="clearFields()">Clear</button></div>
+    </div>
+    <script>
+        function calculate() {
+            var inputVoltage = document.getElementById("inputVoltage").value;
+            var resistance1 = document.getElementById("resistance1").value;
+            var resistance2 = document.getElementById("resistance2").value;
+            var outputVoltage = inputVoltage*resistance1/resistance1+resistance2;
+            document.getElementById("outputVoltage").value = outputVoltage.toFixed(2);
+        }
+
+        function clearFields() {
+            document.getElementById("inputVoltage").value = "";
+            document.getElementById("resistance1").value = "";
+            document.getElementById("resistance2").value = "";
+            document.getElementById("outputVoltage").value = "";
+        }
+    </script>
+</form>
+</body>
+</html>

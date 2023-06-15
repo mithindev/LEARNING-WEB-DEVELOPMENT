@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+
+  </script>
+
+  <style>
+    form {
+      max-width: 650px;
+      margin: 0 auto;
+      border: 1px salmon;
+      padding: 20px;
+      border-radius: 30px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 200px;
+      height: 50px;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    .input {
+      border: none;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+    }
+    .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+  </style>
+
+</head>
+<body>
+
+  
+
+  <form action="#">
+
+    <div class="container">
+      <div class="box">Input Voltage (V)</div><br>
+      <div class="box"><input type="text" id="V1"></div> 
+
+      <div class="box">Input Voltage (V)</div><br>
+      <div class="box"><input type="text" id="V1"></div> 
+
+      <div class="box">Input Voltage (V)</div><br>
+      <div class="box"><input type="text" id="V1"></div> 
+
+      <div class="box">Input Voltage (V)</div>
+      <div class="box"><input type="text" id="V1"></div>
+      <br> 
+
+      <div><button onclick="calculate()" class="button">Calculate</button></div>
+      <div><button onclick="clear()" class="button">Clear</button></div>
+    </div>
+
+  </form>
+  
+</body>
+</html>
