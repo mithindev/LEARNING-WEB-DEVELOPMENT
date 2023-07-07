@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stack-Based Text Editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="decorative-heading">
+    <div>
+      <h2><span>STACK BASED TEXT EDITOR</span></h2>
+    </div>
+  </div>
+  
+  <div class="editor-container">
+    <div>
+      <div class="editor" contenteditable="true" id="textEditor"></div>
+      <div class="button-group">
+        <button id="undoBtn" disabled>Undo</button>
+        <button id="redoBtn" disabled>Redo</button>
+        <button id="saveBtn">Save</button>
+        <button id="loadBtn">Load</button>
+        <input type="file" id="fileInput" accept=".txt" />
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2023 Design: @Mithindev. All rights reserved.</p>
+  </div>
+
+
+    <!-- JAVASCRIPT IMPLEMENTING A CUSTOM STACK  -->
+
+    <script>
+      // Stack data structure implementation
+      class Stack {
+        constructor() {
+          this.items = [];
+        }
+  
+        push(item) {
+          this.items.push(item);
+        }
+  
+        pop() {
+          if (!this.isEmpty()) {
+            return this.items.pop();
+          }
+          return null;
+        }
+  
+        isEmpty() {
+          return this.items.length === 0;
+        }
+  
+        peek() {
+          if (!this.isEmpty()) {
+            return this.items[this.items.length - 1];
+          }
+          return null;
+        }
+  
+        size() {
+          return this.items.length;
+        }
+  
+        clear() {
+          this.items = [];
+        }
+      }
+  
+      // Initialize the stack for undo and redo
+      const undoStack = new Stack();
+      const redoStack = new Stack();
+  
+      // Get references to the editor, undo button, redo button, save button, load button, and file input
+      const editor = document.getElementById('textEditor');
+      const undoBtn = document.getElementById('undoBtn');
+      const redoBtn = document.getElementById('redoBtn');
+      const saveBtn = document.getElementById('saveBtn');
+      const loadBtn = document.getElementById('loadBtn');
+      const fileInput = document.getElementById('fileInput');
+  
+      // Event listener for capturing user actions
+      editor.addEventListener('input', () => {
+        const currentState = editor.innerHTML;
+        undoStack.push(currentState);
+        redoStack.clear();
+        updateButtonStates();
+      });
+  
+      // Event listener for undo button
+      undoBtn.addEventListener('click', () => {
+        const currentState = editor.innerHTML;
+        redoStack.push(currentState);
+        const previousState = undoStack.pop();
+        editor.innerHTML = previousState;
+        updateButtonStates();
+      });
+  
+      // Event listener for redo button
+      redoBtn.addEventListener('click', () => {
+        const currentState = editor.innerHTML;
+        undoStack.push(currentState);
+        const nextState = redoStack.pop();
+        editor.innerHTML = nextState;
+        updateButtonStates();
+      });
+  
+      // Event listener for save button
+      saveBtn.addEventListener('click', () => {
+        const content = editor.innerHTML;
+        const textFile = new Blob([content], { type: 'text/plain' });
+  
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(textFile);
+        a.download = 'text-editor-content.txt';
+        a.click();
+  
+        alert('File saved.');
+      });
+  
+      // Event listener for load button
+      loadBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+  
+      // Event listener for file input change
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+  
+        reader.onload = (event) => {
+          const fileContent = event.target.result;
+          editor.innerHTML = fileContent;
+          undoStack.clear();
+          redoStack.clear();
+          updateButtonStates();
+          alert('File loaded.');
+        };
+  
+        reader.readAsText(file);
+      });
+  
+      // Function to update button states
+      function updateButtonStates() {
+        undoBtn.disabled = undoStack.isEmpty();
+        redoBtn.disabled = redoStack.isEmpty();
+      }
+    </script>
+    <!-- JAVASCRIPT IMPLEMENTING A CUSTOM STACK  -->
+
+</body>
+</html>

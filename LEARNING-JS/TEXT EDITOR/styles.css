@@ -1,0 +1,80 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.decorative-heading {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.decorative-heading h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f2f2f2;
+  padding-top: 50px;
+}
+
+.editor {
+  width: 600px;
+  max-width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  resize: vertical;
+  outline: none;
+  font-size: 14px;
+  background-color: white;
+  color: #333;
+}
+
+.button-group {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-group button {
+  margin-right: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  background-color: green; /* Updated to green color */
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-group button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-group input[type="file"] {
+  display: none;
+}
+
+.footer {
+  background-color: green; /* Updated to green color */
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+  margin-top: auto;
+}
