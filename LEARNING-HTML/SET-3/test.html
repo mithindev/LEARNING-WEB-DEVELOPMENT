@@ -1,51 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS TEMPLATE</title>
-
+  <title>Stack-Based Text Editor</title>
   <style>
-    * {
-      box-sizing: border-box;
+    .editor {
+      width: 400px;
+      height: 200px;
+      border: 1px solid #ccc;
+      padding: 5px;
     }
-    
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    ul {
-      list-style-type: none;  /*Removes the bullet*/
-      margin: 0;
-      padding: 0;
-    }
-
-    li a {
-      display: 0;
-    }
-
-
   </style>
-
 </head>
 <body>
+  <div class="editor" contenteditable="true" id="textEditor"></div>
+  <button id="undoBtn" disabled>Undo</button>
+  <button id="redoBtn" disabled>Redo</button>
 
-  <header>
-    <h1>Header</h1>
-  </header>
+  <script>
+    // Stack data structure implementation
+    class Stack {
+      constructor() {
+        this.items = [];
+      }
 
-  <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Our Team</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-  
+      push(item) {
+        this.items.push(item);
+      }
 
+      pop() {
+        if (!this.isEmpty()) {
+          return this.items.pop();
+        }
+        return null;
+      }
 
-  </div>
+      isEmpty() {
+        return this.items.length === 0;
+      }
+
+      peek() {
+        if (!this.isEmpty()) {
+          return this.items[this.items.length - 1];
+        }
+        return null;
+      }
+
+      size() {
+        return this.items.length;
+      }
+
+      clear() {
+        this.items = [];
+      }
+    }
+
+    // Initialize the stack for undo and redo
+    const undoStack = new Stack();
+    const redoStack = new Stack();
+
+    // Get references to the editor, undo button, and redo button
+    const editor = document.getElementById('textEditor');
+    const undoBtn = document.getElementById('undoBtn');
+    const redoBtn = document.getElementById('redoBtn');
+
+    // Event listener for capturing user actions
+    editor.addEventListener('input', () => {
+      const currentState = editor.innerHTML;
+      undoStack.push(currentState);
+      redoStack.clear();
+      updateButtonStates();
+    });
+
+    // Event listener for undo button
+    undoBtn.addEventListener('click', () => {
+      const currentState = editor.innerHTML;
+      redoStack.push(currentState);
+      const previousState = undoStack.pop();
+      editor.innerHTML = previousState;
+      updateButtonStates();
+    });
+
+    // Event listener for redo button
+    redoBtn.addEventListener('click', () => {
+      const currentState = editor.innerHTML;
+      undoStack.push(currentState);
+      const nextState = redoStack.pop();
+      editor.innerHTML = nextState;
+      updateButtonStates();
+    });
+
+    // Function to update button states
+    function updateButtonStates() {
+      undoBtn.disabled = undoStack.isEmpty();
+      redoBtn.disabled = redoStack.isEmpty();
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stack-Based Text Editor</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #clouds {
+      padding: 100px 0;
+      background: #c9dbe9;
+      background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+      background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
+      background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+    }
+
+    .cloud {
+      width: 200px;
+      height: 30px;
+      background: #fff;
+      border-radius: 200px;
+      position: relative;
+    }
+
+    .cloud:before,
+    .cloud:after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      width: 100px;
+      height: 80px;
+      top: -15px;
+      left: 10px;
+      border-radius: 100px;
+      -webkit-transform: rotate(30deg);
+      transform: rotate(30deg);
+    }
+
+    .cloud:after {
+      width: 120px;
+      height: 120px;
+      top: -55px;
+      right: 15px;
+    }
+
+    .x1 {
+      -webkit-animation: moveclouds 15s linear infinite;
+      animation: moveclouds 15s linear infinite;
+    }
+
+    .x2 {
+      left: 200px;
+      -webkit-transform: scale(0.6);
+      transform: scale(0.6);
+      opacity: 0.6;
+      -webkit-animation: moveclouds 25s linear infinite;
+      animation: moveclouds 25s linear infinite;
+    }
+
+    .x3 {
+      left: -250px;
+      top: -200px;
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+      opacity: 0.8;
+      -webkit-animation: moveclouds 20s linear infinite;
+      animation: moveclouds 20s linear infinite;
+    }
+
+    .x4 {
+      left: 470px;
+      top: -250px;
+      -webkit-transform: scale(0.75);
+      transform: scale(0.75);
+      opacity: 0.75;
+      -webkit-animation: moveclouds 18s linear infinite;
+      animation: moveclouds 18s linear infinite;
+    }
+
+    .x5 {
+      left: -150px;
+      top: -150px;
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+      opacity: 0.8;
+      -webkit-animation: moveclouds 15s linear infinite;
+      animation: moveclouds 15s linear infinite;
+    }
+
+    @-webkit-keyframes moveclouds {
+      0% {
+        margin-left: 1000px;
+      }
+      100% {
+        margin-left: -1000px;
+      }
+    }
+
+    @keyframes moveclouds {
+      0% {
+        margin-left: 1000px;
+      }
+      100% {
+        margin-left: -1000px;
+      }
+    }
+
+    .header {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title {
+      font-family: "jokerman";
+      font-size: 40px;
+      color: #333;
+      margin: 0;
+    }
+
+    .editor {
+      width: 400px;
+      height: 200px;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+  </style>
+
+</head>
+<body>
+  
+  <div class="editor" contenteditable="true" id="textEditor"></div>
+  <button id="undoBtn" disabled>Undo</button>
+  <button id="redoBtn" disabled>Redo</button>
+  <button id="saveBtn">Save</button>
+  <button id="loadBtn">Load</button>
+  <input type="file" id="fileInput" style="display: none;" accept=".txt" />
+
+  <script>
+    // JavaScript code for the stack-based text editor
+    // ...
+  </script>
+</body>
+</html>
