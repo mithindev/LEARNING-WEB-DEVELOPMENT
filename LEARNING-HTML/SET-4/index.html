@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Editor</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Text Editor</h1>
+
+  <textarea id="editor"></textarea>
+  <br>
+  <button onclick="openFile()">Open File</button>
+  <button onclick="saveFile()">Save File</button>
+  <button onclick="undo()">Undo</button>
+  <button onclick="redo()">Redo</button>
+  <input id="fileInput" type="file" accept="text/plain" style="display: none">
+
+  <script>
+    let textarea = document.getElementById('editor');
+    let undoStack = []; // Stack to store text for undo
+    let redoStack = []; // Stack to store text for redo
+    let undoneWordsStack = []; // Stack to store undone words
+    let fileInput = document.getElementById('fileInput');
+
+    fileInput.addEventListener('change', function(event) {
+      let file = event.target.files[0];
+      let reader = new FileReader();
+
+      reader.onload = function(event) {
+        let text = event.target.result;
+        setTextContent(text);
+      };
+
+      reader.readAsText(file);
+    });
+
+    function openFile() {
+      fileInput.click();
+    }
+
+    function saveFile() {
+      let textToSave = textarea.value;
+      let blob = new Blob([textToSave], {type: 'text/plain'});
+
+      let link = document.createElement('a');
+      link.download = 'textfile.txt';
+      link.href = window.URL.createObjectURL(blob);
+      link.style.display = 'none';
+
+      document.body.appendChild(link);
+      link.click();
+
+      document.body.removeChild(link);
+    }
+
+    function undo() {
+      if (undoStack.length > 0) {
+        let currentText = textarea.value;
+        redoStack.push(currentText); // Push the current text to redo stack
+
+        let previousText = undoStack.pop(); // Pop the last text from undo stack
+        let words = previousText.split(' ');
+        let removedWord = words.pop(); // Remove the last word
+        let newText = words.join(' ');
+        setTextContent(newText);
+
+        undoneWordsStack.push(removedWord); // Push the removed word to undone words stack
+      }
+    }
+
+    function redo() {
+      if (redoStack.length > 0) {
+        let currentText = textarea.value;
+        undoStack.push(currentText); // Push the current text to undo stack
+
+        let nextText = redoStack.pop(); // Pop the last text from redo stack
+        let words = textarea.value.split(' ');
+        let wordToRestore = undoneWordsStack.pop(); // Pop the last undone word
+        let originalIndex = words.length;
+        words.splice(originalIndex, 0, wordToRestore); // Insert the word back to the text at the original position
+        let newText = words.join(' ');
+        setTextContent(newText);
+      }
+    }
+
+    function setTextContent(text) {
+      textarea.value = text;
+      undoStack.push(text); // Push the new text to undo stack
+      redoStack = []; // Clear the redo stack
+    }
+
+    textarea.addEventListener('input', function(event) {
+      let newText = event.target.value;
+      setTextContent(newText);
+    });
+  </script>
+</body>
+</html>
