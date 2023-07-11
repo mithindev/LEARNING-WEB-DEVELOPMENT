@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stack-Based Text Editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="decorative-heading">
+    <div>
+      <h2><span>STACK BASED TEXT EDITOR</span></h2>
+    </div>
+  </div>
+  
+  <div class="editor-container">
+    <div>
+      <div class="editor" contenteditable="true" id="textEditor"></div>
+      <div class="button-group">
+        <button id="undoBtn" disabled>Undo</button>
+        <button id="redoBtn" disabled>Redo</button>
+        <button id="saveBtn">Save</button>
+        <button id="loadBtn">Load</button>
+        <input type="file" id="fileInput" accept=".txt" />
+      </div>
+      <div id="characterCount"></div>
+      <div id="lineCount"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2023 Design: @Mithindev. All rights reserved.</p>
+  </div>
+
+
+    <!-- JAVASCRIPT IMPLEMENTING A CUSTOM STACK AND QUEUE -->
+
+    <script>
+      // Stack data structure implementation
+      class Stack {
+        constructor() {
+          this.items = [];
+        }
+  
+        push(item) {
+          this.items.push(item);
+        }
+  
+        pop() {
+          if (!this.isEmpty()) {
+            return this.items.pop();
+          }
+          return null;
+        }
+  
+        isEmpty() {
+          return this.items.length === 0;
+        }
+  
+        peek() {
+          if (!this.isEmpty()) {
+            return this.items[this.items.length - 1];
+          }
+          return null;
+        }
+  
+        size() {
+          return this.items.length;
+        }
+  
+        clear() {
+          this.items = [];
+        }
+      }
+
+      //LinkedList implementation
+      class LinkedListNode {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+
+      class LinkedList {
+        constructor() {
+          this.head = null;
+          this.tail = null;
+        }
+
+        append(data) {
+          const newNode = new LinkedListNode(data);
+
+          if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+          } else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+          }
+        }
+
+        prepend(data) {
+          const newNode = new LinkedListNode(data);
+
+          if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+          } else {
+            newNode.next = this.head;
+            this.head = newNode;
+          }
+        }
+
+        shift() {
+          if (!this.head) {
+            return null;
+          }
+
+          const removedNode = this.head;
+          this.head = this.head.next;
+
+          if (!this.head) {
+            this.tail = null;
+          }
+
+          return removedNode.data;
+        }
+
+        isEmpty() {
+          return !this.head;
+        }
+      }
+
+  
+      // Initialize the stack for undo and redo
+      const undoStack = new Stack();
+      const redoStack = new Stack();
+  
+      // Get references to the editor, undo button, redo button, save button, load button, file input, and line count display
+      const editor = document.getElementById('textEditor');
+      const undoBtn = document.getElementById('undoBtn');
+      const redoBtn = document.getElementById('redoBtn');
+      const saveBtn = document.getElementById('saveBtn');
+      const loadBtn = document.getElementById('loadBtn');
+      const fileInput = document.getElementById('fileInput');
+      const lineCountDisplay = document.getElementById('lineCount');
+  
+      // Event listener for capturing user actions
+      editor.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          insertNewLineCharacter();
+        }
+      });
+
+      // Event listener for capturing user actions
+      editor.addEventListener('input', () => {
+        const currentState = editor.innerText;
+        undoStack.push(currentState);
+        redoStack.clear();
+        updateButtonStates();
+        updateCharacterCount(currentState);
+        updateLineCount(currentState);
+      });
+
+      // Function to insert a new line character
+      function insertNewLineCharacter() {
+        const selection = window.getSelection();
+        const range = selection.getRangeAt(0);
+        const newline = document.createElement('br');
+        range.insertNode(newline);
+        range.setStartAfter(newline);
+        range.collapse(true);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+  
+      // Event listener for undo button
+      undoBtn.addEventListener('click', () => {
+        const currentState = editor.innerText;
+        redoStack.push(currentState);
+        const previousState = undoStack.pop();
+        editor.innerText = previousState;
+        updateButtonStates();
+        updateLineCount(previousState);
+      });
+  
+      // Event listener for redo button
+      redoBtn.addEventListener('click', () => {
+        const currentState = editor.innerText;
+        undoStack.push(currentState);
+        const nextState = redoStack.pop();
+        editor.innerText = nextState;
+        updateButtonStates();
+        updateLineCount(nextState);
+      });
+  
+      // Event listener for save button
+      saveBtn.addEventListener('click', () => {
+        const content = editor.innerText;
+        const textFile = new Blob([content], { type: 'text/plain' });
+  
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(textFile);
+        a.download = 'text-editor-content.txt';
+        a.click();
+  
+        alert('File saved.');
+      });
+  
+      // Event listener for load button
+      loadBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      // Event listener for file input change
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+          const fileContent = event.target.result;
+          editor.innerText = fileContent;
+          undoStack.clear();
+          redoStack.clear();
+          updateButtonStates();
+          updateCharacterCount(fileContent);
+          updateLineCount(fileContent);
+          alert('File loaded.');
+        };
+
+        reader.readAsText(file);
+      });
+
+      // Function to update button states
+      function updateButtonStates() {
+        undoBtn.disabled = undoStack.isEmpty();
+        redoBtn.disabled = redoStack.isEmpty();
+      }
+
+      // Function to update character count display
+      function updateCharacterCount(content) {
+        const count = content.length;
+        const countDisplay = document.getElementById('characterCount');
+        countDisplay.innerText = `Character Count: ${count}`;
+      }
+
+      // Function to update line count display
+      function updateLineCount(content) {
+        const lines = new LinkedList();
+        const linesArray = content.split('\n');
+
+        for (const line of linesArray) {
+          lines.append(line);
+        }
+
+        const lineCount = linesArray.length;
+        const countDisplay = document.getElementById('lineCount');
+        countDisplay.innerText = `Line Count: ${lineCount}`;
+      }
+
+    </script>
+    <!-- JAVASCRIPT IMPLEMENTING A CUSTOM STACK AND QUEUE -->
+
+</body>
+</html>
