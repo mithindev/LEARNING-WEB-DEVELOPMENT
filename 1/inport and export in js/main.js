@@ -1,15 +1,11 @@
 // node package manager => npm
 // package => files of code
 
+const express = require('express')
+const app = express()
 
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
 
-var figlet = require("figlet");
-
-figlet("Open Source", function (err, data) {
-  if (err) {
-    console.log("Something went wrong...");
-    console.dir(err);
-    return;
-  }
-  console.log(data);
-});
+app.listen(3000)
