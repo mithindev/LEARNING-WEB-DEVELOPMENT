@@ -1,0 +1,178 @@
+/* Resetting defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gilroy';
+}
+
+/* Body styles */
+body {
+  background-color: #dadada;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main container */
+.container {
+  background-color: white;
+  width: 480px;
+  height: 650px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+}
+
+/* Centered content */
+.content {
+  width: 56%;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+/* Image styles */
+.img1 {
+  width: 70px;
+  position: relative;
+  top: 20px;
+}
+
+/* Header styles */
+.header {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  line-height: 46px;
+}
+
+/* Detail input styles */
+.detail {
+  width: 100%;
+  height: 48px;
+  margin: 5px;
+  padding: 15px;
+  font-size: 15px;
+  color: gray;
+  border: 2px solid rgb(218, 214, 214);
+  border-radius: 15px;
+}
+.detail:focus {
+  box-shadow: 0px -7px 3px -2px rgba(15, 91, 231, 0.4),
+    0px 7px 3px -2px rgba(15, 91, 231, 0.4),
+    7px 0px 3px -2px rgba(15, 91, 231, 0.4),
+    -7px 0px 3px -2px rgba(15, 91, 231, 0.4);
+  outline: none;
+}
+
+/* Heading styles */
+h4 {
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  left: -60px;
+  margin: 5px;
+}
+
+/* Button styles */
+.btn {
+  width: 100%;
+  height: 40px;
+  border: hidden;
+  border-radius: 20px;
+  font-size: 18px;
+  margin: 5px 0px;
+}
+
+/* Primary button styles */
+.int {
+  background-color: #f30d19;
+  margin: 10px 0px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.int:hover {
+  background-color: #df0812;
+}
+
+/* Separator text styles */
+.or {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 10px 0px;
+}
+
+/* Social media button styles */
+.fbk {
+  background-color: rgb(9, 128, 240);
+  margin: 5px 0px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.fbk a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.fbk:hover {
+  background-color: rgb(8, 110, 206);
+}
+
+/* Google button styles */
+.ggl {
+  text-align: center;
+  background-color: #ccc;
+}
+.ggl a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.ggl:hover {
+  background-color: #a0a0a0;
+}
+
+/* Footer styles */
+footer p {
+  font-size: 12px;
+  margin: 10px;
+  opacity: 0.7;
+}
+p:last-child {
+  opacity: 1;
+}
+
+/* Horizontal rule styles */
+hr {
+  width: 50%;
+  opacity: 0.4;
+  margin-left: 25%;
+}
+
+/* Up button styles */
+.upbtn {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  top: 50px;
+  left: 140px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 126px;
+  padding: 11px 20px;
+  background-color: rgb(241, 236, 236);
+  border-radius: 20px;
+}
